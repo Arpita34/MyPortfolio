@@ -46,7 +46,7 @@ import iiitdmj1logo from './assets/education_logo/iiitdmj_logo.png';
 import mhalogo from './assets/education_logo/dav_logo.jpg';
 
 // Project Section Logo's
-import footballanalysislogo from './assets/work_logo/Football_analysis.png';
+import movie_ticketbooking from './assets/work_logo/movie_ticketbooking.png';
 import fusionlogo from './assets/work_logo/fusion_logo.png';
 import jobfinderlogo from './assets/work_logo/JobFinder.png';
 import pathfinderlogo from './assets/work_logo/pathfinder_logo.png';
@@ -204,7 +204,7 @@ export const SkillsInfo = [
       title: " Movie Ticket Booking System",
       description:
         "Movie Ticket Booking System is a full-stack web application that enables users to browse movies, select seats, and book tickets seamlessly while providing admins with tools to efficiently manage content and bookings.",
-      image: footballanalysislogo,
+      image: movie_ticketbooking,
       tags: ["ReactJS", "NodeJS", "ExpressJS", "MongoDB", "Stripe", "Clerk"],
       github: "https://github.com/Arpita34/MovieTicketBooking",
    //   webapp: "https://drive.google.com/drive/folders/1OMyOBnFBUL93rHz5LOG9UtARw98rwC4S",
