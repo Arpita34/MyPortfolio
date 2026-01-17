@@ -58,14 +58,12 @@ export const About = () => {
 
           {/* About me Paragraph */}
           <p className="text-base sm:text-lg md:text-lg text-gray-400 mb-10 mt-8 leading-relaxed">
-        I'm Arpita Pathak, a full-stack developer with 2+ years of experience building scalable and user-centric web applications. I specialize in the MERN stack (MongoDB, Express, React, Node.js) as well as Python/Django, and I work extensively with modern frontend tools. I’m passionate about writing efficient, maintainable code and creating seamless user experiences that solve real-world problems.
+        I'm Arpita Pathak, a full-stack developer interested in building scalable and user-centric web applications. I specialize in the MERN stack (MongoDB, Express, React, Node.js) as well as Python/Django, and I work extensively with modern frontend tools. I’m passionate about writing efficient, maintainable code and creating seamless user experiences that solve real-world problems.
           </p>
 
           {/* Resume Button */}
           <a
-            href="https://drive.google.com/file/d/19rW5la0aUGUPrr8V5-nZAktXZVGOBLhZ/view?usp=sharing"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="https://drive.google.com/file/d/1uWLlgy3eBL8Iuz3Qta6EoM4zpniZq1A1/view?usp=drive_link"
             className="inline-block text-white py-3 px-8 rounded-full mt-5 text-lg font-bold transition duration-300 transform hover:scale-105"
             style={{
               background: "linear-gradient(90deg, #1349bd, #4a6ed5)",

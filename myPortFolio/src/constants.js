@@ -46,13 +46,9 @@ import iiitdmj1logo from './assets/education_logo/iiitdmj_logo.png';
 import mhalogo from './assets/education_logo/dav_logo.jpg';
 
 // Project Section Logo's
-import footballanalysislogo from './assets/work_logo/Football_analysis.png';
-import fusionlogo from './assets/work_logo/fusion_logo.png';
-import jobfinderlogo from './assets/work_logo/JobFinder.png';
-import pathfinderlogo from './assets/work_logo/pathfinder_logo.png';
 import rentconnectlogo from './assets/work_logo/RentConnect.png';
-import vendorlogo from './assets/work_logo/Vendor_Driver.png';
-import agri_chatbot_logo from './assets/work_logo/agri_chatbot_logo.png';
+import movieticket from './assets/work_logo/movieticket.png';
+import sentilstream from './assets/work_logo/sentilstream.png';
 
 export const SkillsInfo = [
   {
@@ -121,7 +117,7 @@ export const SkillsInfo = [
       role: "Fullstack Developer",
       company: "IITDM Jabalpur",
       date: "August 2024 - April 2025",
-      desc: "Developed dynamic and scalable web applications for hostel management module using the React Js, Python, Django and PostgreSQL, handling both frontend and backend development. Collaborated with cross-functional teams to build responsive UI, implement RESTful APIs, and optimize application performance in an agile environment.",
+      desc: "Created and developed a full-stack web application using React.js, Python, Django, and PostgreSQL to manage institute scholarships and convocation awards. Built a dynamic student dashboard displaying eligible scholarships, application status, and real-time approval or rejection updates. Implemented RESTful APIs and role-based access control to streamline scholarship workflows. Designed responsive user interfaces to ensure seamless usage across devices.",
       skills: [
         "HTML",
         "CSS",
@@ -171,13 +167,13 @@ export const SkillsInfo = [
   export const projects = [
     {
       id: 0,
-      title: "Path Finding Visualizer",
+      title: "SentinelStream",
       description:
-        "The Pathfinding Visualizer is an interactive web application that demonstrates how popular pathfinding algorithms like BFS, DFS, Dijkstra, and A* work through step-by-step animations. Built using React.js, Vite, and TypeScript, the project emphasizes performance, modular design, and clean architecture. It offers an engaging way to understand algorithm behavior visually, making it a valuable tool for learning and teaching pathfinding concepts.",
-      image: pathfinderlogo,
-      tags: [ "JavaScript","TypeScript", "TailwindCSS", "React JS", "Vite"],
-      github: "https://github.com/tushar66sharma/PathFinder_Visualizer",
-      webapp: "https://path-finder-visualizer-tushar66sharmas-projects.vercel.app/",
+        "Built a scalable video platform enabling users to upload, process, and stream videos with real-time progress updates. Integrated AWS-based AI content analysis to detect sensitive content and automatically flag videos as safe or restricted. Implemented role-based access control to securely manage video permissions across user roles.",
+      image: sentilstream,
+      tags: [ "React", "MongoDB","Express.js","Node.js",],
+      github: "https://github.com/Arpita34/SentinelStream",
+      webapp: "https://drive.google.com/file/d/1-ApksnRWzGdpqtXXvmy1CHf1AAOyeHxW/view?usp=sharing",
     },
     {
       id: 1,
@@ -204,7 +200,7 @@ export const SkillsInfo = [
       title: " Movie Ticket Booking System",
       description:
         "Movie Ticket Booking System is a full-stack web application that enables users to browse movies, select seats, and book tickets seamlessly while providing admins with tools to efficiently manage content and bookings.",
-      image: footballanalysislogo,
+      image: movieticket,
       tags: ["ReactJS", "NodeJS", "ExpressJS", "MongoDB", "Stripe", "Clerk"],
       github: "https://github.com/Arpita34/MovieTicketBooking",
    //   webapp: "https://drive.google.com/drive/folders/1OMyOBnFBUL93rHz5LOG9UtARw98rwC4S",
