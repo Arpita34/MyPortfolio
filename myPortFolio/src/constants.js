@@ -46,6 +46,7 @@ import iiitdmj1logo from './assets/education_logo/iiitdmj_logo.png';
 import mhalogo from './assets/education_logo/dav_logo.jpg';
 
 // Project Section Logo's
+import footballanalysislogo from './assets/work_logo/Football_analysis.png';
 import rentconnectlogo from './assets/work_logo/RentConnect.png';
 import movieticket from './assets/work_logo/movieticket.png';
 import sentilstream from './assets/work_logo/sentilstream.png';
