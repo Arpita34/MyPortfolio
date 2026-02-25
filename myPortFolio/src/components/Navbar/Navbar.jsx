@@ -1,26 +1,35 @@
 import React, { useEffect, useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { SiLeetcode, SiCodechef, SiCodeforces } from "react-icons/si";
+import { SiLeetcode, SiCodechef } from "react-icons/si";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState(false);
+  const [activeSection, setActiveSection] = useState("about");
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
+
+      // Auto-detect active section
+      const sections = ["about", "skills", "experience", "work", "education"];
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const el = document.getElementById(sections[i]);
+        if (el && window.scrollY >= el.offsetTop - 120) {
+          setActiveSection(sections[i]);
+          break;
+        }
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-   const handleMenuItemClick = (sectionId) => {
+  const handleMenuItemClick = (sectionId) => {
     setActiveSection(sectionId);
     setIsOpen(false);
-
     const sectionEl = document.getElementById(sectionId);
     if (sectionEl) {
       sectionEl.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -34,159 +43,114 @@ export const Navbar = () => {
     { id: "work", label: "Projects" },
     { id: "education", label: "Education" },
   ];
+
+  const socialLinks = [
+    { href: "https://github.com/Arpita34", icon: <FaGithub size={20} />, label: "GitHub" },
+    { href: "https://www.linkedin.com/in/arpita-pathak-48a47122b/", icon: <FaLinkedin size={20} />, label: "LinkedIn" },
+    { href: "https://leetcode.com/u/Arpita_34/", icon: <SiLeetcode size={20} />, label: "LeetCode" },
+    { href: "https://www.codechef.com/users/arpita2025", icon: <SiCodechef size={20} />, label: "CodeChef" },
+  ];
+
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition duration-300 px-[7vw] md:px-[7vw] lg:px-[20vw] ${
-        isScrolled
-          ? "bg-[#050414] bg-opacity-50 backdrop-blur-md shadow-md"
-          : "bg-transparent"
-      }`}
+      className={`fixed top-0 w-full z-50 transition-all duration-500 ${isScrolled
+          ? "py-3 bg-[#050414]/80 backdrop-blur-xl border-b border-white/5 shadow-[0_4px_30px_rgba(0,0,0,0.5)]"
+          : "py-5 bg-transparent"
+        }`}
     >
-      <div className="text-white py-5 flex justify-between items-center">
-        <div className="text-lg font-semibold cursor-pointer mx-4">
-          <span className="text-[#1349bd]">&lt;</span>
+      <div className="px-[7vw] md:px-[7vw] lg:px-[20vw] flex justify-between items-center">
+        {/* Logo */}
+        <div
+          className="text-lg font-bold cursor-pointer select-none group"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        >
+          <span className="text-[#4a90e2] group-hover:text-[#6eb5ff] transition-colors duration-300">&lt;</span>
           <span className="text-white">Arpita</span>
-          <span className="text-[#1349bd]">/</span>
+          <span className="text-[#4a90e2] group-hover:text-[#6eb5ff] transition-colors duration-300">/</span>
           <span className="text-white">Pathak</span>
-          <span className="text-[#1349bd]">&gt;</span>
+          <span className="text-[#4a90e2] group-hover:text-[#6eb5ff] transition-colors duration-300">&gt;</span>
         </div>
 
-        <ul className="hidden md:flex space-x-8 text-gray-300 mx-4">
+        {/* Desktop Nav Links */}
+        <ul className="hidden md:flex items-center space-x-1 text-sm">
           {menuItems.map((item) => (
-            <li
-              key={item.id}
-              className={`cursor-pointer hover:text-[#1349bd] ${
-                activeSection === item.id ? "text-[#1349bd]" : ""
-              }`}
-            >
-              <button onClick={() => handleMenuItemClick(item.id)}>
+            <li key={item.id}>
+              <button
+                onClick={() => handleMenuItemClick(item.id)}
+                className={`relative px-4 py-2 rounded-full font-medium transition-all duration-300 ${activeSection === item.id
+                    ? "text-white bg-[#1349bd]/20 border border-[#1349bd]/40"
+                    : "text-gray-400 hover:text-white hover:bg-white/5"
+                  }`}
+              >
                 {item.label}
+
               </button>
             </li>
           ))}
         </ul>
 
-        <div className="hidden md:flex space-x-8 mx-4">
-          <a
-            href="https://github.com/Arpita34"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-300 hover:text-[#1349bd]"
-          >
-            <FaGithub size={24} />
-          </a>
-
-          <a
-            href="https://www.linkedin.com/in/arpita-pathak-48a47122b/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-300 hover:text-[#1349bd]"
-          >
-            <FaLinkedin size={24} />
-          </a>
-          <a
-            href="https://leetcode.com/u/Arpita_34/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-300 hover:text-[#1349bd]"
-          >
-            <SiLeetcode size={24} />
-          </a>
-          <a
-            href="https://www.codechef.com/users/arpita2025"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-300 hover:text-[#1349bd]"
-          >
-            <SiCodechef size={24} />
-          </a>
-          {/* <a
-            href="https://codeforces.com/profile/DynamicCoder_66"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-300 hover:text-[#1349bd]"
-          >
-            <SiCodeforces size={24} />
-          </a> */}
+        {/* Desktop Social Icons */}
+        <div className="hidden md:flex items-center space-x-2">
+          {socialLinks.map((s) => (
+            <a
+              key={s.label}
+              href={s.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              title={s.label}
+              className="w-9 h-9 flex items-center justify-center rounded-full text-gray-400 hover:text-white hover:bg-[#1349bd]/30 border border-transparent hover:border-[#1349bd]/40 transition-all duration-300"
+            >
+              {s.icon}
+            </a>
+          ))}
         </div>
 
-        <div className="md:hidden">
-          {isOpen ? (
-            <FiX
-              className="text-3xl text-[#1349bd] cursor-pointer"
-              onClick={() => setIsOpen(false)}
-            />
-          ) : (
-            <FiMenu
-              className="text-3xl text-[#1349bd] cursor-pointer"
-              onClick={() => setIsOpen(true)}
-            />
-          )}
-        </div>
+        {/* Mobile Hamburger */}
+        <button
+          className="md:hidden w-10 h-10 flex items-center justify-center rounded-full text-gray-300 hover:bg-white/10 transition-all duration-300"
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle menu"
+        >
+          {isOpen ? <FiX size={22} /> : <FiMenu size={22} />}
+        </button>
       </div>
 
-      {isOpen && (
-        <div className="absolute top-16 left-1/2 -translate-x-1/2 w-4/5 bg-[#050414]/70 bg-opacity-100 backdrop-blur-lg z-50 rounded-lg shadow-lg transform">
-          <ul className="flex flex-col items-center space-y-4 py-4 text-gray-300">
+      {/* Mobile Menu */}
+      <div
+        className={`md:hidden overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+          }`}
+      >
+        <div className="mx-4 mt-2 mb-4 rounded-2xl bg-[#0a0a1a]/95 backdrop-blur-xl border border-white/10 shadow-2xl overflow-hidden">
+          <ul className="flex flex-col p-4 space-y-1">
             {menuItems.map((item) => (
-              <li
-                key={item.id}
-                className={`cursor-pointer hover:text-white ${
-                  activeSection === item.id ? "text-[#1349bd]" : ""
-                }`}
-              >
-                <button onClick={() => handleMenuItemClick(item.id)}>
+              <li key={item.id}>
+                <button
+                  onClick={() => handleMenuItemClick(item.id)}
+                  className={`w-full text-left px-4 py-3 rounded-xl font-medium text-sm transition-all duration-300 ${activeSection === item.id
+                      ? "text-white bg-[#1349bd]/25 border border-[#1349bd]/40"
+                      : "text-gray-400 hover:text-white hover:bg-white/5"
+                    }`}
+                >
                   {item.label}
                 </button>
               </li>
             ))}
-
-            <div className="flex space-x-4">
-              <a
-                href="https://github.com/Arpita34"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-300 hover:text-white"
-              >
-                <FaGithub size={24} />
-              </a>
-
-              <a
-                href="https://www.linkedin.com/in/arpita-pathak-48a47122b/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-300 hover:text-[#1349bd]"
-              >
-                <FaLinkedin size={24} />
-              </a>
-              <a
-                href="https://leetcode.com/u/Arpita_34/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-300 hover:text-[#1349bd]"
-              >
-                <SiLeetcode size={24} />
-              </a>
-              <a
-                href="https://www.codechef.com/users/arpita2025"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-300 hover:text-[#1349bd]"
-              >
-                <SiCodechef size={24} />
-              </a>
-              {/* <a
-                href="https://codeforces.com/profile/DynamicCoder_66"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-300 hover:text-[#1349bd]"
-              >
-                <SiCodeforces size={24} />
-              </a> */}
-            </div>
           </ul>
+          <div className="flex items-center justify-center space-x-3 p-4 border-t border-white/5">
+            {socialLinks.map((s) => (
+              <a
+                key={s.label}
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 flex items-center justify-center rounded-full text-gray-400 hover:text-white hover:bg-[#1349bd]/30 border border-white/10 hover:border-[#1349bd]/40 transition-all duration-300"
+              >
+                {s.icon}
+              </a>
+            ))}
+          </div>
         </div>
-      )}
+      </div>
     </nav>
   );
 };
