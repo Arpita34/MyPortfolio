@@ -32,7 +32,7 @@ import vercelLogo from './assets/tech_logo/vercel.png';
 import postgreLogo from './assets/tech_logo/postgre.png';
 import csharpLogo from './assets/tech_logo/csharp.png';
 import aimockinterviewlogo from './assets/work_logo/mockINterview_logo.jpg';
-import chatlogo from './assets/work_logo/chat_logo.jpg';
+import assessmentrecommenderlogo from './assets/work_logo/assessment_recommender.png';
 
 //Some  more as per m skills...........
 import awslogo from './assets/tech_logo/AWS.png';
@@ -47,9 +47,11 @@ import mhalogo from './assets/education_logo/dav_logo.jpg';
 
 // Project Section Logo's
 import footballanalysislogo from './assets/work_logo/Football_analysis.png';
-import rentconnectlogo from './assets/work_logo/RentConnect.png';
+// (RentConnect removed)
 import movieticket from './assets/work_logo/movieticket.png';
 import sentilstream from './assets/work_logo/sentilstream.png';
+import nextflowlogo from './assets/work_logo/nextflow.png';
+import pathfindinglogo from './assets/work_logo/pathfinding_visualizer.png';
 
 export const SkillsInfo = [
   {
@@ -188,13 +190,13 @@ export const projects = [
   },
   {
     id: 2,
-    title: "Real-Time Chat Application",
+    title: "SHL Assessment Recommender",
     description:
-      "Built a full stack real-time messaging platform designed to facilitate instant communication between users. The application ensures seamless message delivery, user presence tracking, and secure authentication, making it ideal for collaborative or social use cases.",
-    image: chatlogo,
-    tags: ["ReactJS", "MongoDB", "NodeJS", "ExpressJS", "WebSockets"],
-    github: "https://github.com/Arpita34/chat-app",
-    webapp: "https://chat-app-z66d.vercel.app/",
+      "An AI-powered conversational assistant that helps hiring managers find the right psychometric assessments from SHL's catalog of 400+ tests. Uses a hybrid RAG pipeline (FAISS + BM25 with Reciprocal Rank Fusion) and Llama 3.3-70b to understand role requirements and return grounded shortlists with real product links. Features hallucination guarding, prompt injection defense, and multi-turn conversation support.",
+    image: assessmentrecommenderlogo,
+    tags: ["FastAPI", "Python", "FAISS", "BM25", "Groq", "LLM", "Docker", "Render"],
+    github: "https://github.com/Arpita34/Recommender",
+    webapp: "https://shl-assessment-recommender-ymj4.onrender.com/",
   },
   {
     id: 3,
@@ -208,13 +210,22 @@ export const projects = [
   },
   {
     id: 4,
-    title: " Rent Connect ",
+    title: "NextFlow",
     description:
-      "This mobile and web platform enables students to share and rent food, books, and supplies with ease. Designed for campus communities, it focuses on user-friendly design and real-time data handling to promote sustainability and resource sharing among students.",
-    image: rentconnectlogo,
-    tags: ["React Native", "Node.js", "Express.js", "TypeScript", "JavaScript", " MongoDB", "RestAPIs",],
-    github: "https://github.com/Arpita34/RentConnect_pr",
-    webapp: "https://drive.google.com/drive/folders/1rEClTNFbs2L-0_6ti1labZSn0TIXVdAC?usp=drive_link",
+      "A visual workflow automation platform for building and executing media processing pipelines through a drag-and-drop node-based editor. Supports image/video uploads, frame extraction, cropping, and LLM-powered AI processing with full execution history and per-node audit trails. Background tasks run via Trigger.dev for reliable async execution.",
+    image: nextflowlogo,
+    tags: ["Next.js", "React Flow", "Prisma", "PostgreSQL", "Trigger.dev", "Clerk", "TypeScript"],
+    github: "https://github.com/Arpita34/NextFlow",
+    webapp: "https://drive.google.com/file/d/1KzBemPNLSmyhx8BBHUNVfHBQKL81y1kX/view?usp=sharing",
+  },
+  {
+    id: 5,
+    title: "Pathfinding Algorithm Visualizer",
+    description:
+      "An interactive visualizer demonstrating BFS, DFS, Dijkstra's, and A* pathfinding algorithms with step-by-step visual traversal. Migrated to Vite for 40% faster build times and optimized rendering performance by 30% through efficient React state management and memoization techniques.",
+    image: pathfindinglogo,
+    tags: ["React.js", "TypeScript", "JavaScript", "Vite"],
+    github: "https://github.com/Arpita34/PathFinder",
   },
   // {
   //   id: 5,

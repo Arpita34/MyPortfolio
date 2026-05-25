@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Tilt from "react-parallax-tilt";
 import profileImage from "../../assets/arpita_image.jpg";
-import { FaGithub, FaLinkedin, FaDownload } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaExternalLinkAlt } from "react-icons/fa";
 import { SiLeetcode } from "react-icons/si";
 
 export const About = () => {
@@ -114,7 +114,7 @@ export const About = () => {
           {/* CTA Buttons */}
           <div className="flex flex-wrap gap-4 justify-center md:justify-start pt-4">
             <a
-              href="https://drive.google.com/file/d/1uWLlgy3eBL8Iuz3Qta6EoM4zpniZq1A1/view?usp=drive_link"
+              href="https://drive.google.com/file/d/1h6dxtvuExJi0zG3I4RgOgWF3XdBzGCY9/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               className="group flex items-center gap-2 text-white py-3 px-8 rounded-full text-base font-semibold transition-all duration-300 hover:scale-105 active:scale-95"
@@ -123,8 +123,8 @@ export const About = () => {
                 boxShadow: "0 0 20px rgba(19, 73, 189, 0.5), 0 4px 15px rgba(0,0,0,0.3)",
               }}
             >
-              <FaDownload size={16} className="group-hover:animate-bounce" />
-              Download CV
+              <FaExternalLinkAlt size={16} className="group-hover:animate-bounce" />
+              View CV
             </a>
             <a
               href="https://github.com/Arpita34"
