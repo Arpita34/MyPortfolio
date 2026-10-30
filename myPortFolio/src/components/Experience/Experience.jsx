@@ -47,10 +47,13 @@ export const Experience = () => (
           <div>
             <h3 className="font-display font-extrabold text-2xl sm:text-3xl text-ink">{exp.role}</h3>
             <ul className="mt-4 space-y-2 text-ink-soft text-sm sm:text-base leading-relaxed">
-              {toBullets(exp.desc).map((b, i) => (
+              {(exp.bullets || toBullets(exp.desc || "").map((text) => ({ text: text + "." }))).map((b, i) => (
                 <li key={i} className="flex gap-3">
                   <span className="mt-2 w-2 h-2 rounded-full bg-lavender border border-ink shrink-0" />
-                  <span>{b}.</span>
+                  <span>
+                    {b.label && <strong className="text-ink">{b.label}: </strong>}
+                    {b.text}
+                  </span>
                 </li>
               ))}
             </ul>

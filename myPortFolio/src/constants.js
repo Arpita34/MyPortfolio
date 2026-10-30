@@ -117,7 +117,16 @@ export const experiences = [
     location: "Remote",
     type: "Internship",
     date: "June 2026 - Present",
-    desc: "Shipped an AI tutor on Anthropic's Claude API for multi-turn tutoring, grounding responses in a pgvector RAG pipeline over a concept knowledge graph to reduce hallucinations. Developed REST APIs on a Node.js, Express, Prisma and PostgreSQL backend powering MCQ practice, auto-graded tests and a parent dashboard, secured with JWT authentication.",
+    bullets: [
+      {
+        label: "AI Tutor",
+        text: "Shipped an AI tutor on Anthropic's Claude API for multi-turn tutoring, grounding responses in a pgvector RAG pipeline over a concept knowledge graph to reduce hallucinations.",
+      },
+      {
+        label: "Backend APIs",
+        text: "Developed REST APIs on a Node.js, Express, Prisma, and PostgreSQL backend powering MCQ practice, auto-graded tests, and a parent dashboard, secured with JWT authentication.",
+      },
+    ],
     skills: ["Node JS", "Express JS", "Prisma", "PostgreSQL", "pgvector", "Claude API", "RAG", "JWT"],
   },
 ];
