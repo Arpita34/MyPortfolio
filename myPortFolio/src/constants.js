@@ -43,7 +43,7 @@ import mhalogo from './assets/education_logo/dav_logo.jpg';
 // Project Section Logo's
 // (RentConnect removed)
 import movieticket from './assets/work_logo/movieticket.png';
-import soarsoclogo from './assets/work_logo/soar_soc.svg';
+import soarsoclogo from './assets/work_logo/soar_soc.png';
 import sentilstream from './assets/work_logo/sentilstream.png';
 import nextflowlogo from './assets/work_logo/nextflow.png';
 import pathfindinglogo from './assets/work_logo/pathfinding_visualizer.png';
@@ -156,7 +156,7 @@ export const education = [
 // Hero proof tiles — edit these as numbers change.
 export const heroStats = [
   { label: "DSA problems", value: "500+" },
-  { label: "Walmart CodeHers '25", value: "Top 100" },
+  { label: "Projects shipped", value: "7" },
   { label: "B.Tech CSE", value: "2026" },
 ];
 
