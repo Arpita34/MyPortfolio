@@ -2,10 +2,12 @@ import { useRef } from "react";
 import emailjs from "@emailjs/browser";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { FaGithub, FaLinkedin, FaPaperPlane } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaPaperPlane, FaEnvelope } from "react-icons/fa";
+import { contactEmail } from "../../constants";
 import { SiLeetcode } from "react-icons/si";
 
 const socials = [
+  { label: contactEmail, href: `mailto:${contactEmail}`, icon: <FaEnvelope size={16} /> },
   { label: "GitHub", href: "https://github.com/Arpita34", icon: <FaGithub size={16} /> },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/arpita-pathak-48a47122b/", icon: <FaLinkedin size={16} /> },
   { label: "LeetCode", href: "https://leetcode.com/u/Arpita_34/", icon: <SiLeetcode size={16} /> },
@@ -56,7 +58,7 @@ export const Contact = () => {
               <a
                 key={s.label}
                 href={s.href}
-                target="_blank"
+                target={s.href.startsWith("mailto:") ? undefined : "_blank"}
                 rel="noopener noreferrer"
                 className="btn-press flex items-center gap-2 bg-white border-[1.5px] border-ink rounded-xl px-4 py-2.5 text-sm font-bold text-ink"
               >

@@ -33,7 +33,10 @@ export const Experience = () => (
             </div>
             <div>
               <p className="font-mono text-xs text-muted">{exp.date}</p>
-              <p className="font-semibold text-ink mt-1">{exp.company}</p>
+              <p className="font-semibold text-ink mt-1">
+                {exp.company}
+                {exp.location && <span className="font-normal text-muted"> · {exp.location}</span>}
+              </p>
               <span className="inline-block mt-2 text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-butter border-[1.5px] border-ink">
                 {exp.type || "Part-time"}
               </span>

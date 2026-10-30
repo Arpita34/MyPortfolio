@@ -35,7 +35,6 @@ import assessmentrecommenderlogo from './assets/work_logo/assessment_recommender
 import djangologo from './assets/tech_logo/Django.png';
 
 // Experience Section Logo's
-import iiitdmjlogo from './assets/company_logo/iiitdmj_logo.png';
 
 // Education Section Logo's
 import iiitdmj1logo from './assets/education_logo/iiitdmj_logo.png';
@@ -44,6 +43,7 @@ import mhalogo from './assets/education_logo/dav_logo.jpg';
 // Project Section Logo's
 // (RentConnect removed)
 import movieticket from './assets/work_logo/movieticket.png';
+import soarsoclogo from './assets/work_logo/soar_soc.svg';
 import sentilstream from './assets/work_logo/sentilstream.png';
 import nextflowlogo from './assets/work_logo/nextflow.png';
 import pathfindinglogo from './assets/work_logo/pathfinding_visualizer.png';
@@ -111,37 +111,15 @@ export const SkillsInfo = [
 export const experiences = [
   {
     id: 0,
-    img: null, // no logo yet — initials badge is shown instead
-    role: "Software Development Intern",
+    img: null, // add a logo file here when available
+    role: "Software Development Engineer Intern",
     company: "AiLernova",
+    location: "Remote",
     type: "Internship",
-    date: "2025 - 2026", // TODO: confirm start and end month
-    // TODO: replace with the real work done at AiLernova
-    desc: "Worked as a software development intern on AiLernova's web platform. Built full-stack features end to end, from React UI to backend APIs. Collaborated with the team on shipping AI-powered product functionality.",
-    skills: ["React JS", "Node JS", "Next JS", "Python", "LLM APIs", "Git"],
+    date: "June 2026 - Present",
+    desc: "Shipped an AI tutor on Anthropic's Claude API for multi-turn tutoring, grounding responses in a pgvector RAG pipeline over a concept knowledge graph to reduce hallucinations. Developed REST APIs on a Node.js, Express, Prisma and PostgreSQL backend powering MCQ practice, auto-graded tests and a parent dashboard, secured with JWT authentication.",
+    skills: ["Node JS", "Express JS", "Prisma", "PostgreSQL", "pgvector", "Claude API", "RAG", "JWT"],
   },
-  {
-    id: 1,
-    img: iiitdmjlogo,
-    role: "Fullstack Developer",
-    company: "IIITDM Jabalpur",
-    type: "Part-time",
-    date: "August 2024 - April 2025",
-    desc: "Created and developed a full-stack web application using React.js, Python, Django, and PostgreSQL to manage institute scholarships and convocation awards. Built a dynamic student dashboard displaying eligible scholarships, application status, and real-time approval or rejection updates. Implemented RESTful APIs and role-based access control to streamline scholarship workflows. Designed responsive user interfaces to ensure seamless usage across devices.",
-    skills: [
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "React JS",
-      "TypeScript",
-      "Python",
-      "Tailwind CSS",
-      "PostgresSQL",
-      "Redux",
-      "Django",
-    ],
-  },
-
 ];
 
 export const education = [
@@ -177,10 +155,12 @@ export const education = [
 
 // Hero proof tiles — edit these as numbers change.
 export const heroStats = [
-  { label: "Projects", value: "6+" },
-  { label: "Roles", value: "2" },
-  { label: "B.Tech", value: "2026" },
+  { label: "DSA problems", value: "500+" },
+  { label: "Walmart CodeHers '25", value: "Top 100" },
+  { label: "B.Tech CSE", value: "2026" },
 ];
+
+export const contactEmail = "pathakarpita867@gmail.com";
 
 export const codingProfiles = [
   { name: "LeetCode", url: "https://leetcode.com/u/Arpita_34/" },
@@ -224,6 +204,18 @@ export const projects = [
     tags: ["FastAPI", "Python", "FAISS", "BM25", "Groq", "LLM", "Docker", "Render"],
     github: "https://github.com/Arpita34/Recommender",
     webapp: "https://shl-assessment-recommender-ymj4.onrender.com/",
+  },
+  {
+    id: 6,
+    featured: true,
+    title: "SOAR SOC Assistant",
+    description:
+      "A full-stack Security Operations Center platform where a Llama LLM automates incident triage, severity scoring and threat-intelligence enrichment across 9 dashboards, cutting manual triage effort by about 50%. A context-aware chatbot grounds on live incident data and runs agentic actions such as IP investigation and report generation over a Flask REST API with Firebase role-based access. A scikit-learn intrusion-detection model flags anomalies, and n8n webhooks automate real-time response like IP blocking and escalation.",
+    image: soarsoclogo,
+    tags: ["React", "Flask", "Groq API", "Llama 3.1", "Firebase Auth", "scikit-learn", "n8n"],
+    // TODO: add the GitHub and live links for this project
+    github: "",
+    webapp: "",
   },
   {
     id: 3,

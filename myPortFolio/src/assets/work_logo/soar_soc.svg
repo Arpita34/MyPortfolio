@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400">
+  <rect width="640" height="400" fill="#1F1A33"/>
+  <g fill="none" stroke="#C6EBDC" stroke-width="2" opacity="0.25">
+    <path d="M0 80H640M0 160H640M0 240H640M0 320H640M80 0V400M160 0V400M240 0V400M320 0V400M400 0V400M480 0V400M560 0V400"/>
+  </g>
+  <path d="M320 70 L420 105 V200 C420 265 370 310 320 335 C270 310 220 265 220 200 V105 Z" fill="#C6EBDC" stroke="#2B2540" stroke-width="4"/>
+  <path d="M275 200 L305 230 L368 165" fill="none" stroke="#2B2540" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="320" y="375" text-anchor="middle" font-family="JetBrains Mono, Consolas, monospace" font-size="26" font-weight="700" fill="#FFF8F1">SOAR SOC ASSISTANT</text>
+</svg>
