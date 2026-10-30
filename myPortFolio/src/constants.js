@@ -213,9 +213,8 @@ export const projects = [
       "A full-stack Security Operations Center platform where a Llama LLM automates incident triage, severity scoring and threat-intelligence enrichment across 9 dashboards, cutting manual triage effort by about 50%. A context-aware chatbot grounds on live incident data and runs agentic actions such as IP investigation and report generation over a Flask REST API with Firebase role-based access. A scikit-learn intrusion-detection model flags anomalies, and n8n webhooks automate real-time response like IP blocking and escalation.",
     image: soarsoclogo,
     tags: ["React", "Flask", "Groq API", "Llama 3.1", "Firebase Auth", "scikit-learn", "n8n"],
-    // TODO: add the GitHub and live links for this project
-    github: "",
-    webapp: "",
+    github: "https://github.com/Arpita34/SOAR-Soc-Asistant",
+    webapp: "https://soar-soc-asistant.vercel.app",
   },
   {
     id: 3,
