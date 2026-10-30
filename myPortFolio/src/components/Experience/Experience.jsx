@@ -1,145 +1,66 @@
-import React from 'react';
-import { experiences } from '../../constants';
-import { FaBriefcase, FaCalendarAlt, FaMapMarkerAlt } from 'react-icons/fa';
+import { experiences } from "../../constants";
+import { SectionHeading } from "../SectionHeading";
 
-export const Experience = () => {
-  return (
-    <section
-      id="experience"
-      className="relative py-28 px-6 sm:px-12 md:px-[7vw] lg:px-[16vw] font-sans overflow-hidden"
-      style={{
-        background: "linear-gradient(180deg, #0d2254 0%, #070b12 100%)",
-      }}
-    >
-      {/* Background decorations */}
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-800/30 to-transparent" />
-      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#1349bd]/30 to-transparent" />
-      <div className="absolute top-1/2 left-0 w-72 h-72 rounded-full bg-[#1349bd]/5 blur-[100px] pointer-events-none" />
+const toBullets = (text) =>
+  text
+    .split(/\.\s+/)
+    .map((s) => s.trim().replace(/\.$/, ""))
+    .filter(Boolean);
 
-      {/* Section Title */}
-      <div className="text-center mb-20">
-        <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
-          Work{" "}
-          <span
-            style={{
-              background: "linear-gradient(135deg, #b79cff, #6eb5ff)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-            }}
-          >
-            Experience
-          </span>
-        </h2>
-        <div className="section-divider w-40 mx-auto" />
-        <p className="text-gray-400 mt-6 text-base max-w-xl mx-auto leading-relaxed">
-          A collection of my professional roles and impactful contributions across organizations.
-        </p>
-      </div>
+// Two-column rows: logo + dates on the left, role and outcomes on the right.
+export const Experience = () => (
+  <section id="experience" className="relative py-24 md:py-32 px-[7vw] lg:px-[12vw] font-sans bg-white/40 border-y-[1.5px] border-ink">
+    <SectionHeading
+      eyebrow="Where I've worked"
+      title="Work"
+      highlight="experience"
+      color="bg-lavender"
+    />
 
-      {/* Experience Cards */}
-      <div className="flex flex-col items-center gap-8">
-        {experiences.map((exp, idx) => (
-          <div
-            key={exp.id}
-            className="w-full max-w-3xl group transition-all duration-500"
-          >
-            <div
-              className="relative rounded-2xl p-6 sm:p-8 transition-all duration-500 hover:-translate-y-1"
-              style={{
-                background: "rgba(255,255,255,0.02)",
-                backdropFilter: "blur(20px)",
-                border: "1px solid rgba(255,255,255,0.07)",
-                boxShadow: "0 4px 24px rgba(0,0,0,0.4)",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.border = "1px solid rgba(19,73,189,0.4)";
-                e.currentTarget.style.boxShadow = "0 0 40px rgba(19,73,189,0.2), 0 8px 32px rgba(0,0,0,0.5)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.border = "1px solid rgba(255,255,255,0.07)";
-                e.currentTarget.style.boxShadow = "0 4px 24px rgba(0,0,0,0.4)";
-              }}
-            >
-              {/* Top gradient line */}
-              <div
-                className="absolute top-0 left-8 right-8 h-0.5 rounded-full"
-                style={{
-                  background: "linear-gradient(90deg, transparent, #1349bd, #7c3aed, transparent)",
-                }}
-              />
-
-              {/* Header */}
-              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5 mb-6">
-                {/* Company Logo */}
-                <div
-                  className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden flex-shrink-0 ring-2 ring-white/10"
-                  style={{ background: "#fff" }}
-                >
-                  <img
-                    src={exp.img}
-                    alt={exp.company}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-
-                <div className="flex-1">
-                  <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mb-1">
-                    <h3 className="text-xl sm:text-2xl font-bold text-white">
-                      {exp.role}
-                    </h3>
-                    <span
-                      className="text-xs font-semibold px-3 py-1 rounded-full"
-                      style={{
-                        background: "rgba(19,73,189,0.2)",
-                        border: "1px solid rgba(19,73,189,0.4)",
-                        color: "#6eb5ff",
-                      }}
-                    >
-                      <FaBriefcase className="inline mr-1 mb-0.5" size={10} />
-                      Part-time
-                    </span>
-                  </div>
-                  <h4 className="text-base text-gray-300 font-medium mb-2">{exp.company}</h4>
-                  <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500">
-                    <span className="flex items-center gap-1.5">
-                      <FaCalendarAlt size={12} className="text-[#4a90e2]" />
-                      {exp.date}
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Description */}
-              <p className="text-gray-400 leading-relaxed text-sm sm:text-base mb-6 pl-0 sm:pl-0">
-                {exp.desc}
-              </p>
-
-              {/* Skills */}
-              <div>
-                <h5 className="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-3">
-                  Technologies Used
-                </h5>
-                <div className="flex flex-wrap gap-2">
-                  {exp.skills.map((skill, i) => (
-                    <span
-                      key={i}
-                      className="text-xs font-medium px-3 py-1.5 rounded-lg transition-all duration-200 hover:scale-105"
-                      style={{
-                        background: "rgba(19,73,189,0.15)",
-                        border: "1px solid rgba(19,73,189,0.3)",
-                        color: "#93c5fd",
-                      }}
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </div>
+    <div className="mt-14 flex flex-col divide-y-[1.5px] divide-dashed divide-ink/40">
+      {experiences.map((exp) => (
+        <article key={exp.id} className="grid md:grid-cols-[260px_1fr] gap-6 md:gap-12 py-10">
+          {/* Left */}
+          <div className="flex md:flex-col items-center md:items-start gap-4">
+            <div className="w-16 h-16 rounded-xl overflow-hidden bg-white border-[1.5px] border-ink shadow-hard shrink-0 flex items-center justify-center">
+              {exp.img ? (
+                <img src={exp.img} alt={exp.company} className="w-full h-full object-cover" />
+              ) : (
+                <span className="w-full h-full flex items-center justify-center bg-peach font-display font-extrabold text-xl text-ink">
+                  {exp.company.replace(/[^A-Z]/g, "").slice(0, 2) || exp.company.slice(0, 2)}
+                </span>
+              )}
+            </div>
+            <div>
+              <p className="font-mono text-xs text-muted">{exp.date}</p>
+              <p className="font-semibold text-ink mt-1">{exp.company}</p>
+              <span className="inline-block mt-2 text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-butter border-[1.5px] border-ink">
+                {exp.type || "Part-time"}
+              </span>
             </div>
           </div>
-        ))}
-      </div>
-    </section>
-  );
-};
+
+          {/* Right */}
+          <div>
+            <h3 className="font-display font-extrabold text-2xl sm:text-3xl text-ink">{exp.role}</h3>
+            <ul className="mt-4 space-y-2 text-ink-soft text-sm sm:text-base leading-relaxed">
+              {toBullets(exp.desc).map((b, i) => (
+                <li key={i} className="flex gap-3">
+                  <span className="mt-2 w-2 h-2 rounded-full bg-lavender border border-ink shrink-0" />
+                  <span>{b}.</span>
+                </li>
+              ))}
+            </ul>
+            <div className="flex flex-wrap gap-2 mt-5">
+              {exp.skills.map((s) => (
+                <span key={s} className="text-xs font-medium px-2.5 py-1 rounded-lg bg-lavender-soft border-[1.5px] border-ink text-ink">
+                  {s}
+                </span>
+              ))}
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+);

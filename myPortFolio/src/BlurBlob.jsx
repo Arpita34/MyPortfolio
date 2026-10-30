@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-export const BlurBlob = ({position,size}) => {
+export const BlurBlob = ({position,size,color='#D9CCFF'}) => {
     const {top,left}=position
     const {width,height}=size
   return (
-    <div className='absolute'
+    <div className='absolute pointer-events-none animate-blob'
     style={{
         top:top,
         left:left,
@@ -13,7 +13,8 @@ export const BlurBlob = ({position,size}) => {
         height:height,
         transform: 'translate(-50%,-50%)',
     }}>
-        <div className='w-full h-full bg-blue-500 rounded-full opacity-20 blur-3xl animate-blob'>
+        <div className='w-full h-full rounded-full opacity-60 blur-3xl'
+        style={{ background: color }}>
 
 
         </div>
@@ -34,4 +35,5 @@ BlurBlob.propTypes={
         width: PropTypes.string,
         height: PropTypes.string,
     }),
+    color: PropTypes.string,
 };

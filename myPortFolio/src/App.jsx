@@ -7,29 +7,29 @@ import { Education } from "./components/Education/Education";
 import { Contact } from "./components/Contact/Contact";
 import { Footer } from "./components/Footer/Footer";
 import { BlurBlob } from "./BlurBlob";
-import './index.css';
+import "./index.css";
 
 function App() {
-
   return (
-    <>
-      <div className="bg-[#050414]">
-          <BlurBlob position={{top:'35%',left:'20%'}} size={{width:'30%',height:'40%'}}></BlurBlob>
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
-        <div className="relative pt-20">
-          <Navbar/>
-          <About/>
-          <Skills/>
-          <Experience/>
-          <Work/>
-          <Education/>
-          <Contact/>
-          <Footer/>
-        </div>
+    <div className="relative bg-cream dot-grid text-ink overflow-hidden">
+      {/* Blobs are decorative; hidden on phones to keep scrolling smooth */}
+      <div className="hidden md:block">
+        <BlurBlob position={{ top: "18%", left: "15%" }} size={{ width: "32%", height: "30%" }} color="#D9CCFF" />
+        <BlurBlob position={{ top: "45%", left: "90%" }} size={{ width: "24%", height: "20%" }} color="#C6EBDC" />
+        <BlurBlob position={{ top: "70%", left: "8%" }} size={{ width: "26%", height: "20%" }} color="#CFE2FF" />
       </div>
-     
-    </>
-  )
+      <div className="relative">
+        <Navbar />
+        <About />
+        <Work />
+        <Experience />
+        <Skills />
+        <Education />
+        <Contact />
+        <Footer />
+      </div>
+    </div>
+  );
 }
 
-export default App
+export default App;

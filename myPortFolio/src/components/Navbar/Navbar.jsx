@@ -13,7 +13,7 @@ export const Navbar = () => {
       setIsScrolled(window.scrollY > 50);
 
       // Auto-detect active section
-      const sections = ["about", "skills", "experience", "work", "education"];
+      const sections = ["about", "work", "experience", "skills", "education", "contact"];
       for (let i = sections.length - 1; i >= 0; i--) {
         const el = document.getElementById(sections[i]);
         if (el && window.scrollY >= el.offsetTop - 120) {
@@ -38,10 +38,11 @@ export const Navbar = () => {
 
   const menuItems = [
     { id: "about", label: "About" },
-    { id: "skills", label: "Skills" },
-    { id: "experience", label: "Experience" },
     { id: "work", label: "Projects" },
+    { id: "experience", label: "Experience" },
+    { id: "skills", label: "Skills" },
     { id: "education", label: "Education" },
+    { id: "contact", label: "Contact" },
   ];
 
   const socialLinks = [
@@ -54,21 +55,21 @@ export const Navbar = () => {
   return (
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-500 ${isScrolled
-          ? "py-3 bg-[#050414]/80 backdrop-blur-xl border-b border-white/5 shadow-[0_4px_30px_rgba(0,0,0,0.5)]"
+          ? "py-3 bg-cream/90 backdrop-blur-xl border-b-[1.5px] border-ink"
           : "py-5 bg-transparent"
         }`}
     >
       <div className="px-[7vw] md:px-[7vw] lg:px-[20vw] flex justify-between items-center">
         {/* Logo */}
         <div
-          className="text-lg font-bold cursor-pointer select-none group"
+          className="text-lg font-bold font-mono cursor-pointer select-none group"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         >
-          <span className="text-[#4a90e2] group-hover:text-[#6eb5ff] transition-colors duration-300">&lt;</span>
-          <span className="text-white">Arpita</span>
-          <span className="text-[#4a90e2] group-hover:text-[#6eb5ff] transition-colors duration-300">/</span>
-          <span className="text-white">Pathak</span>
-          <span className="text-[#4a90e2] group-hover:text-[#6eb5ff] transition-colors duration-300">&gt;</span>
+          <span className="text-link group-hover:text-ink transition-colors duration-300">&lt;</span>
+          <span className="text-ink">Arpita</span>
+          <span className="text-link group-hover:text-ink transition-colors duration-300">/</span>
+          <span className="text-ink">Pathak</span>
+          <span className="text-link group-hover:text-ink transition-colors duration-300">&gt;</span>
         </div>
 
         {/* Desktop Nav Links */}
@@ -78,8 +79,8 @@ export const Navbar = () => {
               <button
                 onClick={() => handleMenuItemClick(item.id)}
                 className={`relative px-4 py-2 rounded-full font-medium transition-all duration-300 ${activeSection === item.id
-                    ? "text-white bg-[#1349bd]/20 border border-[#1349bd]/40"
-                    : "text-gray-400 hover:text-white hover:bg-white/5"
+                    ? "text-ink bg-lavender border-[1.5px] border-ink shadow-[2px_2px_0_#2B2540]"
+                    : "text-ink-soft border-[1.5px] border-transparent hover:text-ink hover:bg-lavender-soft"
                   }`}
               >
                 {item.label}
@@ -98,7 +99,7 @@ export const Navbar = () => {
               target="_blank"
               rel="noopener noreferrer"
               title={s.label}
-              className="w-9 h-9 flex items-center justify-center rounded-full text-gray-400 hover:text-white hover:bg-[#1349bd]/30 border border-transparent hover:border-[#1349bd]/40 transition-all duration-300"
+              className="w-9 h-9 flex items-center justify-center rounded-full text-ink-soft hover:text-ink hover:bg-peach border-[1.5px] border-transparent hover:border-ink transition-all duration-300"
             >
               {s.icon}
             </a>
@@ -107,7 +108,7 @@ export const Navbar = () => {
 
         {/* Mobile Hamburger */}
         <button
-          className="md:hidden w-10 h-10 flex items-center justify-center rounded-full text-gray-300 hover:bg-white/10 transition-all duration-300"
+          className="md:hidden w-11 h-11 flex items-center justify-center rounded-xl text-ink bg-white border-[1.5px] border-ink transition-all duration-300"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle menu"
         >
@@ -120,15 +121,15 @@ export const Navbar = () => {
         className={`md:hidden overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
           }`}
       >
-        <div className="mx-4 mt-2 mb-4 rounded-2xl bg-[#0a0a1a]/95 backdrop-blur-xl border border-white/10 shadow-2xl overflow-hidden">
+        <div className="mx-4 mt-2 mb-4 rounded-2xl bg-white border-[1.5px] border-ink shadow-hard overflow-hidden">
           <ul className="flex flex-col p-4 space-y-1">
             {menuItems.map((item) => (
               <li key={item.id}>
                 <button
                   onClick={() => handleMenuItemClick(item.id)}
                   className={`w-full text-left px-4 py-3 rounded-xl font-medium text-sm transition-all duration-300 ${activeSection === item.id
-                      ? "text-white bg-[#1349bd]/25 border border-[#1349bd]/40"
-                      : "text-gray-400 hover:text-white hover:bg-white/5"
+                      ? "text-ink bg-lavender border-[1.5px] border-ink"
+                      : "text-ink-soft border-[1.5px] border-transparent hover:text-ink hover:bg-lavender-soft"
                     }`}
                 >
                   {item.label}
@@ -136,14 +137,14 @@ export const Navbar = () => {
               </li>
             ))}
           </ul>
-          <div className="flex items-center justify-center space-x-3 p-4 border-t border-white/5">
+          <div className="flex items-center justify-center space-x-3 p-4 border-t-[1.5px] border-ink bg-cream">
             {socialLinks.map((s) => (
               <a
                 key={s.label}
                 href={s.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 flex items-center justify-center rounded-full text-gray-400 hover:text-white hover:bg-[#1349bd]/30 border border-white/10 hover:border-[#1349bd]/40 transition-all duration-300"
+                className="w-10 h-10 flex items-center justify-center rounded-full text-ink bg-white hover:bg-peach border-[1.5px] border-ink transition-all duration-300"
               >
                 {s.icon}
               </a>

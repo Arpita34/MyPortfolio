@@ -1,190 +1,156 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Tilt from "react-parallax-tilt";
 import profileImage from "../../assets/arpita_image.jpg";
-import { FaGithub, FaLinkedin, FaExternalLinkAlt } from "react-icons/fa";
-import { SiLeetcode } from "react-icons/si";
+import { FaGithub, FaArrowDown, FaFileAlt } from "react-icons/fa";
+import { SiLeetcode, SiCodechef } from "react-icons/si";
+import { heroStats, codingProfiles, resumeUrl } from "../../constants";
 
+const profileIcons = {
+  LeetCode: <SiLeetcode size={14} />,
+  CodeChef: <SiCodechef size={14} />,
+  GitHub: <FaGithub size={14} />,
+};
+
+// Split-screen hero: left = developer, right = problem solver.
+// Hovering a side lets it grow, the way adhamdannaway.com's hero does.
 export const About = () => {
-  const words = [
-    "Full-Stack Developer",
-    "AI Enthusiast",
-    "Competitive Programmer",
-  ];
+  const [side, setSide] = useState(null);
 
-  const [text, setText] = useState("");
-  const [wordIndex, setWordIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
+  const leftBasis = side === "left" ? "md:basis-[58%]" : side === "right" ? "md:basis-[42%]" : "md:basis-1/2";
+  const rightBasis = side === "right" ? "md:basis-[58%]" : side === "left" ? "md:basis-[42%]" : "md:basis-1/2";
 
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
-
-  useEffect(() => {
-    const current = words[wordIndex % words.length];
-    const delta = isDeleting ? 50 : 150;
-    const timeout = setTimeout(() => {
-      setText((prev) =>
-        isDeleting
-          ? current.substring(0, prev.length - 1)
-          : current.substring(0, prev.length + 1)
-      );
-
-      if (!isDeleting && text === current) {
-        setTimeout(() => setIsDeleting(true), 1000);
-      } else if (isDeleting && text === "") {
-        setIsDeleting(false);
-        setWordIndex((i) => i + 1);
-      }
-    }, delta);
-
-    return () => clearTimeout(timeout);
-  }, [text, isDeleting, wordIndex]);
-
-
+  const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
   return (
-    <section
-      id="about"
-      className="relative py-4 px-[7vw] md:px-[7vw] lg:px-[20vw] font-sans mt-16 md:mt-24 lg:mt-32 overflow-hidden"
-    >
-      {/* Decorative background glow */}
-      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 rounded-full bg-[#1349bd]/10 blur-[100px] pointer-events-none" />
-      <div className="absolute top-1/3 right-1/4 w-64 h-64 rounded-full bg-purple-800/10 blur-[100px] pointer-events-none" />
+    <section id="about" className="relative font-sans">
+      <div className="flex flex-col md:flex-row md:min-h-[88vh] border-y-[1.5px] border-ink">
+        {/* LEFT — Developer */}
+        <div
+          onMouseEnter={() => setSide("left")}
+          onMouseLeave={() => setSide(null)}
+          className={`relative ${leftBasis} transition-[flex-basis] duration-500 ease-out bg-lavender-soft border-b-[1.5px] md:border-b-0 md:border-r-[1.5px] border-ink px-[7vw] md:px-[6vw] pt-28 pb-16 md:py-24 flex flex-col justify-center gap-6`}
+        >
+          <span className="font-mono text-xs uppercase tracking-[0.3em] text-muted">01 / Developer</span>
 
-      <div
-        className={`flex flex-col md:flex-row justify-between items-center gap-12 transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          }`}
-      >
-        {/* Left: Text */}
-        <div className="w-full md:w-1/2 text-center md:text-left space-y-4">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#1349bd]/15 border border-[#1349bd]/30 text-[#6eb5ff] text-sm font-medium mb-2">
-            <span className="w-2 h-2 rounded-full bg-[#4ade80] animate-pulse" />
-            Open to Work
+          <div className="inline-flex w-fit items-center gap-2 px-3 py-1 rounded-full bg-mint border-[1.5px] border-ink text-xs font-mono">
+            <span className="w-2 h-2 rounded-full bg-[#2F9E6E] animate-pulse" />
+            Open to work · 2026
           </div>
 
-          <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-white leading-tight">
-            Hi, I'm
+          <h1 className="font-display font-extrabold leading-[0.95] tracking-tight text-[2.6rem] sm:text-6xl lg:text-7xl">
+            Hi, I&apos;m{" "}
+            <span className="inline-block bg-lavender border-[1.5px] border-ink rounded-2xl px-3 shadow-hard -rotate-1">
+              Arpita
+            </span>
+            <br />
+            I build full-stack
+            <br />
+            &amp; AI products.
           </h1>
 
-          <h2 className="text-4xl sm:text-6xl md:text-7xl font-extrabold leading-tight">
-            <span
-              style={{
-                background: "linear-gradient(135deg, #ffffff 0%, #6eb5ff 50%, #b79cff 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
-            >
-              Arpita Pathak
-            </span>
-          </h2>
-
-          <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold">
-            <span className="text-gray-300">I am a </span>
-            <span
-              style={{
-                background: "linear-gradient(90deg, #4a90e2, #9b6fd4)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
-            >
-              {text}
-            </span>
-            <span
-              className="text-[#4a90e2] font-thin ml-0.5"
-              style={{ animation: "blink 1s step-end infinite" }}
-            >
-              |
-            </span>
-          </h3>
-
-          <p className="text-base sm:text-lg text-gray-400 leading-relaxed pt-2 max-w-lg">
-            I'm a full-stack developer building scalable, user-centric web apps.
-            I specialize in the{" "}
-            <span className="text-[#6eb5ff] font-medium">MERN stack</span> and{" "}
-            <span className="text-[#b79cff] font-medium">Python/Django</span>,
-            passionate about clean code and seamless user experiences.
+          <p className="text-base sm:text-lg text-ink-soft leading-relaxed max-w-md">
+            CSE graduate from IIITDM Jabalpur, B.Tech 2026. I ship end-to-end web apps with the{" "}
+            <span className="font-semibold text-ink bg-peach px-1.5 rounded-md">MERN stack</span>,{" "}
+            <span className="font-semibold text-ink bg-sky px-1.5 rounded-md">Next.js</span> and{" "}
+            <span className="font-semibold text-ink bg-butter px-1.5 rounded-md">Python</span>, and lately
+            RAG and LLM features that actually reach users.
           </p>
 
-
-
-          {/* CTA Buttons */}
-          <div className="flex flex-wrap gap-4 justify-center md:justify-start pt-4">
+          <div className="flex flex-wrap gap-3 pt-1">
+            <button
+              onClick={() => scrollTo("work")}
+              className="btn-press flex items-center gap-2 bg-peach border-[1.5px] border-ink rounded-2xl px-6 py-3 font-bold text-ink"
+            >
+              See projects <FaArrowDown size={13} />
+            </button>
             <a
-              href="https://drive.google.com/file/d/1h6dxtvuExJi0zG3I4RgOgWF3XdBzGCY9/view?usp=sharing"
+              href={resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center gap-2 text-white py-3 px-8 rounded-full text-base font-semibold transition-all duration-300 hover:scale-105 active:scale-95"
-              style={{
-                background: "linear-gradient(135deg, #1349bd, #4a6ed5, #7c3aed)",
-                boxShadow: "0 0 20px rgba(19, 73, 189, 0.5), 0 4px 15px rgba(0,0,0,0.3)",
-              }}
+              className="btn-press flex items-center gap-2 bg-white border-[1.5px] border-ink rounded-2xl px-6 py-3 font-bold text-ink"
             >
-              <FaExternalLinkAlt size={16} className="group-hover:animate-bounce" />
-              View CV
-            </a>
-            <a
-              href="https://github.com/Arpita34"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-gray-300 py-3 px-8 rounded-full text-base font-semibold border border-white/15 hover:border-[#1349bd]/60 hover:text-white hover:bg-[#1349bd]/10 transition-all duration-300"
-            >
-              <FaGithub size={16} />
-              GitHub
+              <FaFileAlt size={14} /> Résumé
             </a>
           </div>
+
+          {/* Proof tiles */}
+          <dl className="grid grid-cols-3 gap-3 max-w-md pt-2">
+            {heroStats.map((s) => (
+              <div key={s.label} className="bg-white border-[1.5px] border-ink rounded-xl px-3 py-2.5">
+                <dt className="font-mono text-[10px] uppercase tracking-wider text-muted">{s.label}</dt>
+                <dd className="font-display font-extrabold text-xl sm:text-2xl text-ink leading-tight">{s.value}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
 
-        {/* Right: Image */}
-        <div className="w-full md:w-1/2 flex justify-center md:justify-end">
-          <div className="relative">
-            {/* Spinning ring */}
-            <div
-              className="absolute inset-0 rounded-full"
-              style={{
-                background: "conic-gradient(from 0deg, #1349bd, #7c3aed, #1349bd, transparent)",
-                padding: "3px",
-                borderRadius: "50%",
-                animation: "spinSlow 8s linear infinite",
-              }}
-            />
-            <Tilt
-              tiltMaxAngleX={8}
-              tiltMaxAngleY={8}
-              glareEnable={true}
-              glareMaxOpacity={0.15}
-              className="w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 relative z-10"
-            >
-              <div className="w-full h-full rounded-full p-1.5"
-                style={{
-                  background: "linear-gradient(135deg, #1349bd, #7c3aed)",
-                }}>
+        {/* RIGHT — Problem solver */}
+        <div
+          onMouseEnter={() => setSide("right")}
+          onMouseLeave={() => setSide(null)}
+          className={`relative ${rightBasis} transition-[flex-basis] duration-500 ease-out bg-ink text-cream px-[7vw] md:px-[6vw] py-16 md:py-24 flex flex-col justify-center gap-6 overflow-hidden`}
+        >
+          {/* faint grid */}
+          <div
+            className="absolute inset-0 opacity-[0.07] pointer-events-none"
+            style={{ backgroundImage: "linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)", backgroundSize: "28px 28px" }}
+          />
+
+          <span className="relative font-mono text-xs uppercase tracking-[0.3em] text-cream/60">02 / Problem solver</span>
+
+          {/* Photo — straddles both personalities */}
+          <div className="relative flex items-center gap-6">
+            <Tilt tiltMaxAngleX={8} tiltMaxAngleY={8} className="shrink-0">
+              <div className="relative w-36 h-36 sm:w-44 sm:h-44 rounded-full border-[1.5px] border-cream p-1 bg-cream shadow-[5px_5px_0_#D9CCFF]">
+                <img src={profileImage} alt="Arpita Pathak" className="w-full h-full rounded-full object-cover" />
+                {/* right half rendered as "code" tone */}
                 <img
                   src={profileImage}
-                  alt="Arpita Pathak"
-                  className="w-full h-full rounded-full object-cover"
-                  style={{
-                    boxShadow: "0 0 40px rgba(19, 73, 189, 0.4)",
-                  }}
+                  alt=""
+                  aria-hidden
+                  className="absolute inset-1 w-[calc(100%-0.5rem)] h-[calc(100%-0.5rem)] rounded-full object-cover grayscale contrast-125"
+                  style={{ clipPath: "inset(0 0 0 50%)" }}
                 />
               </div>
             </Tilt>
-
-
+            <div className="font-display font-extrabold leading-[0.95] tracking-tight text-3xl sm:text-5xl">
+              Competitive
+              <br />
+              <span className="inline-block bg-lavender text-ink border-[1.5px] border-cream rounded-2xl px-2 rotate-1">programmer</span>
+            </div>
           </div>
-        </div>
-      </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40 hover:opacity-70 transition-opacity cursor-pointer"
-        onClick={() => document.getElementById("skills")?.scrollIntoView({ behavior: "smooth" })}>
-        <span className="text-xs text-gray-500 uppercase tracking-widest">Scroll</span>
-        <div className="w-5 h-8 rounded-full border border-gray-600 flex items-start justify-center pt-1.5">
-          <div className="w-1 h-2 rounded-full bg-[#4a90e2]"
-            style={{ animation: "float 1.5s ease-in-out infinite" }} />
+          {/* Code card */}
+          <div className="relative rounded-2xl border-[1.5px] border-cream/70 bg-[#1F1A33] font-mono text-xs sm:text-sm overflow-hidden max-w-md">
+            <div className="flex items-center gap-2 px-4 py-2 border-b-[1.5px] border-cream/40">
+              <span className="w-2.5 h-2.5 rounded-full bg-blush" />
+              <span className="w-2.5 h-2.5 rounded-full bg-butter" />
+              <span className="w-2.5 h-2.5 rounded-full bg-mint" />
+              <span className="ml-2 text-cream/60">arpita.ts</span>
+            </div>
+            <pre className="px-4 py-4 leading-relaxed text-cream/90 whitespace-pre-wrap">
+{`const arpita = {
+  stack:   ["React", "Node", "Django", "Next.js"],
+  dsa:     ["C++", "graphs", "DP", "greedy"],
+  ai:      ["RAG", "FAISS", "LLM apps"],
+  loves:   "turning hard problems into shipped code",
+};`}
+            </pre>
+          </div>
+
+          <div className="relative flex flex-wrap gap-2">
+            {codingProfiles.map((p) => (
+              <a
+                key={p.name}
+                href={p.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 rounded-full border-[1.5px] border-cream/70 px-4 py-2 text-sm font-semibold text-cream hover:bg-cream hover:text-ink transition-colors"
+              >
+                {profileIcons[p.name]} {p.name}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </section>

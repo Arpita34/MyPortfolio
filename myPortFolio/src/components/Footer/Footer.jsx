@@ -1,5 +1,5 @@
 import React from "react";
-import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram, FaYoutube } from "react-icons/fa";
+import { FaLinkedin, FaGithub } from "react-icons/fa";
 export const Footer = () => {
 
   const handleScroll = (sectionId) => {
@@ -9,24 +9,26 @@ export const Footer = () => {
     }
   };
   return (
-    <footer className="text-white py-8 px-[12vw] md:px-[7vw] lg:px-[20vw]">
+    <footer className="text-ink py-10 px-[12vw] md:px-[7vw] lg:px-[20vw] border-t-[1.5px] border-ink bg-cream">
       <div className="container mx-auto text-center">
         {/* Name / Logo */}
-        <h2 className="text-xl font-semibold text-blue-500">Arpita Pathak</h2>
+        <h2 className="text-xl font-display font-bold text-ink">
+          <span className="bg-lavender border-[1.5px] border-ink rounded-lg px-2">Arpita Pathak</span>
+        </h2>
 
         {/* Navigation Links - Responsive */}
-        <nav className="flex flex-wrap justify-center space-x-4 sm:space-x-6 mt-4">
+        <nav className="flex flex-wrap justify-center gap-x-6 gap-y-1 mt-5">
           {[
             { name: "About", id: "about" },
-            { name: "Skills", id: "skills" },
+            { name: "Projects", id: "work" },
             { name: "Experience", id: "experience" },
-            { name: "Projects", id: "projects" },
+            { name: "Skills", id: "skills" },
             { name: "Education", id: "education" },
           ].map((item, index) => (
             <button
               key={index}
               onClick={() => handleScroll(item.id)}
-              className="hover:text-purple-500 text-sm sm:text-base my-1"
+              className="text-ink-soft hover:text-link text-sm sm:text-base my-1 font-medium"
             >
               {item.name}
             </button>
@@ -34,18 +36,18 @@ export const Footer = () => {
         </nav>
 
         {/* Social Media Icons - Responsive */}
-        <div className="flex flex-wrap justify-center space-x-4 mt-6">
+        <div className="flex flex-wrap justify-center gap-3 mt-6">
           {[
-            { icon: <FaLinkedin />, link: "https://www.linkedin.com/in/arpita-pathak-48a47122b/" },
-           // { icon: <FaInstagram />, link: "https://www.instagram.com/i_tushar_66?igsh=MXIxc3J6d3lyN3I4dA==" },
-            
+            { icon: <FaLinkedin />, link: "https://www.linkedin.com/in/arpita-pathak-48a47122b/", label: "LinkedIn" },
+            { icon: <FaGithub />, link: "https://github.com/Arpita34", label: "GitHub" },
           ].map((item, index) => (
             <a
               key={index}
               href={item.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xl hover:text-purple-500 transition-transform transform hover:scale-110"
+              aria-label={item.label}
+              className="btn-press w-11 h-11 flex items-center justify-center rounded-full text-xl text-ink bg-white hover:bg-peach border-[1.5px] border-ink"
             >
               {item.icon}
             </a>
@@ -53,8 +55,8 @@ export const Footer = () => {
         </div>
 
         {/* Copyright Text */}
-        <p className="text-sm text-gray-400 mt-6">
-          © 2025 Arpita Pathak.  All rights reserved.
+        <p className="text-sm text-muted font-mono mt-6">
+          © 2026 Arpita Pathak.  All rights reserved.
         </p>
       </div>
     </footer>

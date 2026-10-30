@@ -1,52 +1,96 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap');
 
 @import "tailwindcss";
 
-* {
-  font-family: "Poppins", sans-serif;
+/* Pastel palette — one ink color for text & outlines, soft pastel fills */
+@theme {
+  --color-ink: #2B2540;
+  --color-ink-soft: #4A4460;
+  --color-muted: #5E5873;
+  --color-cream: #FFF8F1;
+  --color-dot: #E6D9CB;
+  --color-link: #5B3FC4;
+  --color-lavender: #D9CCFF;
+  --color-lavender-soft: #F3EEFF;
+  --color-peach: #FFD8C2;
+  --color-peach-soft: #FFF1E8;
+  --color-mint: #C6EBDC;
+  --color-mint-soft: #ECF8F2;
+  --color-sky: #CFE2FF;
+  --color-sky-soft: #EAF2FF;
+  --color-blush: #FFD6E5;
+  --color-blush-soft: #FFEEF4;
+  --color-butter: #FFF0B8;
+
+  --font-sans: "DM Sans", sans-serif;
+  --font-display: "Bricolage Grotesque", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --shadow-hard: 4px 4px 0 #2B2540;
+  --shadow-hard-lg: 6px 6px 0 #2B2540;
+
+  --animate-blob: blob 8s infinite ease-in-out;
+  @keyframes blob {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); }
+    33% { transform: translate(-45%, -55%) scale(1.15); }
+    66% { transform: translate(-55%, -45%) scale(0.9); }
+  }
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+  background-color: var(--color-cream);
 }
 
 html {
   scroll-behavior: smooth;
 }
 
+/* Dot-grid canvas background */
+.dot-grid {
+  background-image: radial-gradient(var(--color-dot) 1.2px, transparent 1.2px);
+  background-size: 22px 22px;
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #050414;
+  background: var(--color-cream);
 }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, #1349bd, #6b21a8);
+  background: var(--color-lavender);
+  border: 1.5px solid var(--color-ink);
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(to bottom, #1d5ce8, #7c3aed);
+  background: var(--color-peach);
 }
 
-/* Glowing text utility */
-.glow-text {
-  text-shadow: 0 0 20px rgba(19, 73, 189, 0.6), 0 0 40px rgba(19, 73, 189, 0.3);
+/* Pressable button: lifts on hover, presses into its shadow on click */
+.btn-press {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: var(--shadow-hard);
+}
+.btn-press:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--color-ink);
+}
+.btn-press:active {
+  transform: translate(3px, 3px);
+  box-shadow: 1px 1px 0 var(--color-ink);
 }
 
-/* Gradient border utility */
-.gradient-border {
-  position: relative;
-  background: linear-gradient(135deg, #0f172a, #1e1b4b);
-  border-radius: 16px;
+/* Card that lifts on hover */
+.card-lift {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: var(--shadow-hard);
 }
-.gradient-border::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  padding: 1px;
-  border-radius: 16px;
-  background: linear-gradient(135deg, #1349bd, #7c3aed, #1349bd);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
+.card-lift:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 8px 8px 0 var(--color-ink);
 }
 
 /* Floating animation */
@@ -56,17 +100,6 @@ html {
 }
 .animate-float {
   animation: float 4s ease-in-out infinite;
-}
-
-/* Shimmer animation */
-@keyframes shimmer {
-  0% { background-position: -200% center; }
-  100% { background-position: 200% center; }
-}
-.animate-shimmer {
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-  background-size: 200% auto;
-  animation: shimmer 2s linear infinite;
 }
 
 /* Fade-in-up animation */
@@ -82,15 +115,6 @@ html {
 }
 .animate-fade-in-up {
   animation: fadeInUp 0.7s ease-out forwards;
-}
-
-/* Pulse glow animation */
-@keyframes pulseGlow {
-  0%, 100% { box-shadow: 0 0 15px rgba(19, 73, 189, 0.4); }
-  50% { box-shadow: 0 0 35px rgba(19, 73, 189, 0.8), 0 0 60px rgba(124, 58, 237, 0.3); }
-}
-.animate-pulse-glow {
-  animation: pulseGlow 2.5s ease-in-out infinite;
 }
 
 /* Typing cursor blink */
@@ -111,26 +135,21 @@ html {
   animation: spinSlow 8s linear infinite;
 }
 
-/* Gradient text */
-.gradient-text {
-  background: linear-gradient(135deg, #6eb5ff 0%, #b79cff 50%, #ffffff 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Glass card */
-.glass-card {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-/* Section heading underline gradient */
+/* Section heading underline — pastel stripe */
 .section-divider {
-  height: 3px;
-  background: linear-gradient(90deg, transparent, #1349bd, #7c3aed, #1349bd, transparent);
+  height: 6px;
   border-radius: 9999px;
+  border: 1.5px solid var(--color-ink);
+  background: linear-gradient(90deg, var(--color-lavender) 0 25%, var(--color-peach) 25% 50%, var(--color-mint) 50% 75%, var(--color-sky) 75% 100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 @layer utilities {
@@ -138,3 +157,30 @@ html {
         clip-path: polygon(0 0, 100% 0, 100% 98%, 75% 95%, 0 100%);
     }
 }
+
+/* Toast notifications (react-toastify) in the site's sticker style */
+.Toastify__toast-container {
+  --toastify-toast-top: 88px; /* clear the fixed navbar */
+}
+.Toastify__toast {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--color-ink);
+  border: 1.5px solid var(--color-ink);
+  border-radius: 16px;
+  box-shadow: var(--shadow-hard);
+  min-height: 60px;
+}
+/* The library reads these variables, so they win regardless of rule order */
+.Toastify__toast--success {
+  --toastify-color-light: var(--color-mint);
+  --toastify-color-progress-success: var(--color-ink);
+  --toastify-icon-color-success: var(--color-ink);
+}
+.Toastify__toast--error {
+  --toastify-color-light: var(--color-blush);
+  --toastify-color-progress-error: var(--color-ink);
+  --toastify-icon-color-error: var(--color-ink);
+}
+.Toastify__close-button { color: var(--color-ink); opacity: 0.7; }

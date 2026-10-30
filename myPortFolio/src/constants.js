@@ -10,7 +10,6 @@ import tailwindcssLogo from './assets/tech_logo/tailwindcss.png';
 import gsapLogo from './assets/tech_logo/gsap.png';
 import materialuiLogo from './assets/tech_logo/materialui.png';
 import bootstrapLogo from './assets/tech_logo/bootstrap.png';
-import springbootLogo from './assets/tech_logo/springboot.png';
 import nodejsLogo from './assets/tech_logo/nodejs.png';
 import expressjsLogo from './assets/tech_logo/express.png';
 import mysqlLogo from './assets/tech_logo/mysql.png';
@@ -26,16 +25,13 @@ import githubLogo from './assets/tech_logo/github.png';
 import vscodeLogo from './assets/tech_logo/vscode.png';
 import postmanLogo from './assets/tech_logo/postman.png';
 import mcLogo from './assets/tech_logo/mc.png';
-import figmaLogo from './assets/tech_logo/figma.png';
 import netlifyLogo from './assets/tech_logo/netlify.png';
 import vercelLogo from './assets/tech_logo/vercel.png';
 import postgreLogo from './assets/tech_logo/postgre.png';
-import csharpLogo from './assets/tech_logo/csharp.png';
 import aimockinterviewlogo from './assets/work_logo/mockINterview_logo.jpg';
 import assessmentrecommenderlogo from './assets/work_logo/assessment_recommender.png';
 
 //Some  more as per m skills...........
-import awslogo from './assets/tech_logo/AWS.png';
 import djangologo from './assets/tech_logo/Django.png';
 
 // Experience Section Logo's
@@ -46,7 +42,6 @@ import iiitdmj1logo from './assets/education_logo/iiitdmj_logo.png';
 import mhalogo from './assets/education_logo/dav_logo.jpg';
 
 // Project Section Logo's
-import footballanalysislogo from './assets/work_logo/Football_analysis.png';
 // (RentConnect removed)
 import movieticket from './assets/work_logo/movieticket.png';
 import sentilstream from './assets/work_logo/sentilstream.png';
@@ -116,9 +111,21 @@ export const SkillsInfo = [
 export const experiences = [
   {
     id: 0,
+    img: null, // no logo yet — initials badge is shown instead
+    role: "Software Development Intern",
+    company: "AiLernova",
+    type: "Internship",
+    date: "2025 - 2026", // TODO: confirm start and end month
+    // TODO: replace with the real work done at AiLernova
+    desc: "Worked as a software development intern on AiLernova's web platform. Built full-stack features end to end, from React UI to backend APIs. Collaborated with the team on shipping AI-powered product functionality.",
+    skills: ["React JS", "Node JS", "Next JS", "Python", "LLM APIs", "Git"],
+  },
+  {
+    id: 1,
     img: iiitdmjlogo,
     role: "Fullstack Developer",
-    company: "IITDM Jabalpur",
+    company: "IIITDM Jabalpur",
+    type: "Part-time",
     date: "August 2024 - April 2025",
     desc: "Created and developed a full-stack web application using React.js, Python, Django, and PostgreSQL to manage institute scholarships and convocation awards. Built a dynamic student dashboard displaying eligible scholarships, application status, and real-time approval or rejection updates. Implemented RESTful APIs and role-based access control to streamline scholarship workflows. Designed responsive user interfaces to ensure seamless usage across devices.",
     skills: [
@@ -142,9 +149,10 @@ export const education = [
     id: 0,
     img: iiitdmj1logo,
     school: "IIITDM Jabalpur",
-    date: "August 2022 - Present",
+    date: "August 2022 - 2026",
+    grade: "B.Tech, 2026",
     //  grade: "8.4 CPI",
-    desc: "I am pursuing my Bachelor's degree in Computer Science and Engineering (B.Tech.) from Indian Institute of Information Technology Design and Manufacturing Jabalpur. Throughout my studies, I was immersed in a variety of subjects that deepened my understanding of computing and technology. From exploring Data Structures and Algorithms to diving into Web Development and Database Management Systems, I gained practical insights into the world of software development. My time at IITDMJ allowed me to work on projects that applied theoretical concepts to real-world problems.",
+    desc: "I graduated with a Bachelor's degree in Computer Science and Engineering (B.Tech.) from Indian Institute of Information Technology Design and Manufacturing Jabalpur. Throughout my studies, I was immersed in a variety of subjects that deepened my understanding of computing and technology. From exploring Data Structures and Algorithms to diving into Web Development and Database Management Systems, I gained practical insights into the world of software development. My time at IITDMJ allowed me to work on projects that applied theoretical concepts to real-world problems.",
     degree: "B.Tech - Computer Science and Engineering",
   },
   {
@@ -167,9 +175,26 @@ export const education = [
   },
 ];
 
+// Hero proof tiles — edit these as numbers change.
+export const heroStats = [
+  { label: "Projects", value: "6+" },
+  { label: "Roles", value: "2" },
+  { label: "B.Tech", value: "2026" },
+];
+
+export const codingProfiles = [
+  { name: "LeetCode", url: "https://leetcode.com/u/Arpita_34/" },
+  { name: "CodeChef", url: "https://www.codechef.com/users/arpita2025" },
+  { name: "GitHub", url: "https://github.com/Arpita34" },
+];
+
+export const resumeUrl =
+ 
+"https://www.linkedin.com/safety/go?url=https%3A%2F%2Fdrive.google.com%2Ffile%2Fd%2F1oFyWahl1EZHsEq6szoOisI-h5azw2Fnb%2Fview&trk=flagship-messaging-web&messageThreadUrn=urn%3Ali%3AmessagingThread%3A2-NjRhMDlmNDctNDFjZS00OWMxLTkyMzEtZmQ3YzFlMGE0MTBjXzEwMA%3D%3D"
 export const projects = [
   {
     id: 0,
+    featured: true,
     title: "SentinelStream",
     description:
       "Built a scalable video platform enabling users to upload, process, and stream videos with real-time progress updates. Integrated AWS-based AI content analysis to detect sensitive content and automatically flag videos as safe or restricted. Implemented role-based access control to securely manage video permissions across user roles.",
@@ -180,6 +205,7 @@ export const projects = [
   },
   {
     id: 1,
+    featured: true,
     title: "Full Stack AI Mock Interview Application",
     description:
       "a full-stack, AI-powered mock interview system designed to help users practice technical and behavioral interviews with real-time, adaptive feedback.The platform simulates a realistic interview environment where users answer questions, and the system instantly analyzes their responses using advanced AI models. The goal is to improve user preparation, boost confidence, and offer personalized guidance,similar to what a real interviewer would provide.",
@@ -190,6 +216,7 @@ export const projects = [
   },
   {
     id: 2,
+    featured: true,
     title: "SHL Assessment Recommender",
     description:
       "An AI-powered conversational assistant that helps hiring managers find the right psychometric assessments from SHL's catalog of 400+ tests. Uses a hybrid RAG pipeline (FAISS + BM25 with Reciprocal Rank Fusion) and Llama 3.3-70b to understand role requirements and return grounded shortlists with real product links. Features hallucination guarding, prompt injection defense, and multi-turn conversation support.",
@@ -210,6 +237,7 @@ export const projects = [
   },
   {
     id: 4,
+    featured: true,
     title: "NextFlow",
     description:
       "A visual workflow automation platform for building and executing media processing pipelines through a drag-and-drop node-based editor. Supports image/video uploads, frame extraction, cropping, and LLM-powered AI processing with full execution history and per-node audit trails. Background tasks run via Trigger.dev for reliable async execution.",
